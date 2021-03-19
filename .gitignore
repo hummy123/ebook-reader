@@ -1,18 +1,3 @@
-
 .DS_Store
 node_modules/
 
-.db
-*snap.png
-*diff.png
-*trace.json
-*.0x
-
-config.json 
-#Should probably be re-added
-#Or at least provide documentation on how to populate
-
-*.pptx
-*.mp4
-*.codio
-*.c9
