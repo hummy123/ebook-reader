@@ -1,0 +1,281 @@
+
+* {
+  font-family: Georgia, serif;
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+p {
+  text-indent: 1.0em;
+  text-align: justify;
+}
+
+h1 {
+  display:block;
+  font-size: 2vw;
+}
+
+h2 {
+  margin-top: 0.2vw;
+  padding-top:0.2vw;
+  font-size: 1.3vw;
+}
+
+body {
+  background-color: rgb(187, 187, 187);
+}
+
+main {
+  max-width: 70%;
+  margin: auto;
+  text-align: justify;
+  padding: 4vw;
+  padding-top: 1.5vh;
+  padding-bottom: 1vh;
+  box-sizing: border-box;
+  background-color: lightgray;
+  line-height: 1.6;
+  box-shadow:
+  inset 0 -3em 3em rgba(0,0,0,0.1),
+        0 0  0.5em rgb(202, 192, 192),
+        0.3em 0.3em 1em rgba(0,0,0,0.3);
+}
+
+p {
+  margin-bottom: 1vh;
+  font-size: 1.25em;
+}
+
+header {
+  background-color: #ccc;
+  border-bottom: 0.2vh solid grey;
+  padding-top: 1vh;
+  padding-bottom: 1vh;
+  position: sticky;
+  top:0;
+  width: 100%;
+  text-align: center;
+  box-shadow:
+  inset 0 -3em 3em rgba(0,0,0,0.1),
+        0 0  0.5em rgb(202, 192, 192),
+        0.3em 0.3em 1em rgba(0,0,0,0.3);
+}
+
+footer {
+  background-color: #ccc;
+  border-top: 0.2vh solid grey;
+  text-align: center;
+  position: sticky;
+  bottom:0;
+  width: 100%;
+  box-shadow:
+  inset 0 -3em 3em rgba(0,0,0,0.1),
+        0 0  0.5em rgb(202, 192, 192),
+        0.3em 0.3em 1em rgba(0,0,0,0.3);
+}
+
+div {
+  display:none;
+  background-color: rgb(205, 219, 221);
+  box-shadow:
+  inset 0 -3em 3em rgba(0,0,0,0.1),
+        0 0  0.5em rgb(202, 192, 192),
+        0.3em 0.3em 1em rgba(0,0,0,0.3);
+}
+
+div ul {
+  list-style-type: none;
+  border: 0.2em solid rgb(184, 183, 183);
+}
+
+div ul li {
+  padding: 0.5em;;
+  background-color: rgb(205, 219, 221);
+  display: block;
+  cursor: pointer; 
+}
+
+div h1 {
+  margin:auto;
+  text-align: center;
+}
+
+div ul li:hover {
+  background-color: rgb(240, 233, 233);
+  color: grey;
+}
+
+img {
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+  box-shadow:
+  inset 0 -3em 3em rgba(0,0,0,0.1),
+        0 0  0.5em rgb(202, 192, 192),
+        0.3em 0.3em 1em rgba(0,0,0,0.3);
+}
+
+footer ul, footer a {
+  list-style-type: none;
+  border: 0.1em solid rgb(184, 183, 183);
+  
+}
+
+footer ul li, footer a {
+  margin-right: 2vw;
+  margin-left: 2vw;
+  font-size: 1.25vw;
+  display: inline-block;
+}
+
+footer ul li a, footer a {
+  padding: 1em;
+  height:max-content;
+  width: max-content;
+  text-decoration: none;
+  background-color: rgb(205, 219, 221);
+  color: black;
+  box-shadow:
+  inset 0 -3em 3em rgba(0,0,0,0.1),
+        0 0  0.5em rgb(202, 192, 192),
+        0.3em 0.3em 1em rgba(0,0,0,0.3);
+  display: inline-block;
+}
+
+footer ul li a:hover, footer a:hover {
+  background-color: rgb(240, 233, 233);
+  color: grey;
+}
+
+blockquote {
+  text-align: center;
+}
+
+header a {
+	margin-top: 0vw;
+	margin-right: 3em;
+	float: right;
+	font-size: 1.3vw;
+}
+
+main section {
+  text-align: center;
+  height: 100%;
+}
+
+/* ===== FORMS ===== */
+
+form p {
+  text-align: center;
+  font-size: 2em;
+  margin-top: 2vh;
+  padding-top: 4.5vh;
+}
+
+input[type="text"], input[type="email"], input[type="password"] {
+  font-size: 1.5em;
+  width: 80%;
+  height: 30%;
+}
+
+fieldset {
+	position: relative;
+	width: 25vw;
+	border: 1px solid #CCC;
+	padding-top: 4vw;
+}
+
+legend {
+	position:absolute;
+  top:0;
+	left:0;
+	width: 25.5vw;
+	background-color: #ccc;
+	border-bottom: 5px solid grey;
+	padding: 0.6vw;
+}
+
+
+input:focus {
+	outline:none;
+}
+
+/* input[type="file"] {
+	display: none;
+} */
+input[type="submit"], button {
+  margin-right: 2em;
+  margin-left: 2em;
+  margin-bottom: 1.3em;
+  font-size: 1.5em;
+  background-color: rgb(205, 219, 221);
+  padding: 1em;
+  height:max-content;
+  width: max-content;
+  box-shadow:
+  inset 0 -3em 3em rgba(0,0,0,0.1),
+        0 0  0.5em rgb(202, 192, 192),
+        0.3em 0.3em 1em rgba(0,0,0,0.3);
+
+}
+
+input[type="submit"]:hover, button:hover {
+  background-color: rgb(240, 233, 233);
+  color: grey;
+}
+
+button a {
+	text-decoration: none;
+	color: white;
+}
+
+
+textarea {
+	height: 10vw;
+	resize: none;
+}
+
+input:required, textarea:required {
+	border-width: 2px;
+}
+
+input:invalid, textarea:invalid {
+	border-color: red;
+}
+input:valid, textarea:valid {
+	border-color: darkgreen;
+}
+
+
+
+form > br {
+	line-height: 3vw;
+}
+
+
+
+dl {
+  width: 35vw;
+  overflow: hidden;
+  /* background: #ff0; */
+  padding: 0;
+	margin: 0;
+	font-size: 1.5vw;
+}
+dt {
+  float: left;
+  width: 10.5vw;
+  /* adjust the width; make sure the total of both is 100% */
+  /* background: #cc0; */
+  padding: 0.5vw;
+  margin: 0
+}
+dd {
+  float: left;
+  width: 21vw;
+  /* adjust the width; make sure the total of both is 100% */
+	/* background: #dd0; */
+	padding: 0.5vw;
+  margin: 0
+}

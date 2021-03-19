@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en">
+<head>
+<script type="text/javascript" src="/read.js"></script>
+<title>{{ch.booktitle}}</title>
+<link rel="stylesheet" href="/main.css" type="text/css" />
+<meta http-equiv="Content-Type" content="application/xhtml+xml; charset=utf-8" />
+
+</head>
+<header>
+<h1>{{ch.title}}</h1>
+<h2>{{ch.subtitle}}</h2>
+</header>
+<body>
+<main>
+    {{#each ch.content}}
+        {{#if p}}
+            <p>{{p}}</p>
+        {{else if blockquote}}
+            <blockquote>{{blockquote}}</blockquote>
+        {{else if img}}
+            <img src="{{img}}">
+        {{/if}}
+    {{/each}}
+</main>
+
+<div id="menu"> 
+    <ul>
+        <li id="copyButton">Copy</li>
+        <li id="newnoteButton">Add Note</li>
+        <li id="bookmarkButton">Bookmark</li>
+        <li id="idiomButton">Search Idiom</li>
+        <li id="settinsButton">Display Settings</li>
+    </ul>
+</div>
+<div id="definitions"></div>
+<footer>
+    <ul>
+        {{#if ch.prev}}
+            <li><a href="{{ch.prev}}"> Previous Chapter </a></li>
+        {{/if}}
+        <li><a href="/book/{{ch.bookid}}"> Table of Contents </a></li>
+        {{#if ch.next}}
+            <li><a href="{{ch.next}}">Next Chapter</a></li>
+        {{/if}}
+    </ul>
+</footer>
+</body>
+</html>

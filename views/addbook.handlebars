@@ -1,0 +1,38 @@
+
+<!doctype html>
+
+<html lang="en">
+	<head>
+		<meta charset="utf-8">
+		<title>Create an Account</title>
+		<meta name="description" content="Form to create a new account">
+		<meta name="author" content="Humza Shahid">
+		<link href="/main.css" type="text/css" rel="stylesheet" />
+		<script type="module" src="/main.js"></script>
+	</head>
+	<header>
+			<h1>Add Book</h1>
+			{{#if authorised}}
+				<a href="/logout">Log out</a>
+			{{else}}
+				<a href="/login">Log in</a>
+			{{/if}}
+		</header>
+	<body>
+		{{#if msg}}
+ 			<aside>
+				<p class="msg">{{msg}}</p>
+			</aside>
+		{{/if}}
+	<main>
+		<section>
+		<form method="post" action="/addbook">
+			<p><label>Book Title <input type="text" name="title" /></label></p>
+			<p><label>Book Description <textarea name="description"></textarea></label></p>
+			<p><label>Number of chapters <input type="text" name="chnum" /> </label></p>
+			<p><input type="submit" /></p>
+		</form>
+		</section>
+	</main>
+	</body>
+</html>

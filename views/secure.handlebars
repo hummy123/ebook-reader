@@ -1,0 +1,28 @@
+
+<!doctype html>
+
+<html lang="en">
+	<head>
+		<meta charset="utf-8">
+		<title>Home Page</title>
+		<meta name="description" content="Authentication page">
+		<meta name="author" content="Humza Shahid">
+		<link href="/main.css" type="text/css" rel="stylesheet" />
+		<script type="module" src="/main.js"></script>
+	</head>
+	<body>
+		<header>
+		<h1>Authentication Page</h1>
+		<a href="/logout">Log out</a>
+		</header>
+		{{#if msg}}
+ 			<aside>
+				<p class="msg">{{msg}}</p>
+			</aside>
+		{{/if}}
+		<main>
+		<p>Users must be logged in with a valid account to see this authentication page.</p>
+		<p><a href="/">Return to Home</a></p>
+		</main>
+	</body>
+</html>

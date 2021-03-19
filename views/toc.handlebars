@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en">
+<head>
+<title>{{toc.booktitle}}</title>
+<link rel="stylesheet" href="/main.css" type="text/css" />
+<meta http-equiv="Content-Type" content="application/xhtml+xml; charset=utf-8" />
+
+</head>
+<header>
+<h1>{{toc.booktitle}}</h1>
+</header>
+<body>
+<main>
+    <img src="../books/{{toc.image}}" /> <br />
+    {{#each toc.chapters}}
+        <p><a href="{{@root.toc.bookid}}/{{id}}">{{name}}</a></p>
+    {{/each}}
+</main>
+
+<div id="definitions"></div>
+<footer>
+    <ul>
+        <li><a href="/"> Return to Home </a></li>
+    </ul>
+</footer>
+</body>
+</html>

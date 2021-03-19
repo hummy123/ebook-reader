@@ -1,0 +1,45 @@
+
+<!doctype html>
+
+<html lang="en">
+	<head>
+		<meta charset="utf-8">
+		<title>Home Page</title>
+		<meta name="description" content="View events">
+		<meta name="author" content="Humza Shahid">
+		<link href="{{host}}/style.css" type="text/css" rel="stylesheet" />
+		<script type="module" src="{{host}}/main.js"></script>
+	</head>
+	<body>
+		<header>
+			<h1>Home</h1>
+			{{#if authorised}}
+				<a href="/logout">Log out</a>
+			{{else}}
+				<a href="/login">Log in</a>
+			{{/if}}
+		</header>
+		{{#if msg}}
+ 			<aside>
+				<p class="msg">{{msg}}</p>
+			</aside>
+		{{/if}}
+	<main>
+		<section>
+		{{#each events}}
+			<a href="/event/{{this.id}}">
+			<figure> 
+				<img src="{{host}}/uploads/{{this.image}}">
+				<figcaption>{{this.title}} <br /> {{this.date}}</figcaption>
+			</figure>
+		</a>
+		{{/each}}
+			</section>
+	</main>
+		<footer>
+			{{#if authorised}}
+			<p><button><a href="/newevent">Register new event</a></button></p>
+			{{/if}}
+		</footer>
+	</body>
+</html>

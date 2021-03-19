@@ -1,0 +1,39 @@
+
+<!doctype html>
+
+<html lang="en">
+	<head>
+		<meta charset="utf-8">
+		<title>Register an Account</title>
+		<meta name="description" content="Form to register a new account">
+		<meta name="author" content="Humza Shahid">
+		<link href="/main.css" type="text/css" rel="stylesheet" />
+	</head>
+	<body>
+		<header>
+		<h1>Create an Account</h1>
+		<a href="/login">Log in</a>
+		</header>
+		
+		<main>
+		<section>
+		<form action="/register" method="post">
+			<p>
+				<label for="user">Username</label><br />
+				<input type="text" name="user" placeholder="Enter username">
+			</p>
+			<p>
+				<label for="pass">Password</label><br />
+				<input type="password" name="pass" placeholder="Enter password">
+			</p>
+			<p>
+				<label for="email">Email</label><br />
+				<input type="email" name="email" placeholder="Enter email address">
+			</p>
+			<p><input type="submit" value="Create"></p>
+		</form>
+		</section>
+		</main>
+		<footer><a href="">Return to Home</a></footer>
+	</body>
+</html>
