@@ -26,10 +26,10 @@ class Books {
 	}
 
 	/**
-	 * creates a new event
-	 * @param {String} title the name of the event
-	 * @param {String} description the event description
-	 * @param {Number} chNums the name and extension of the event image
+	 * creates a new book
+	 * @param {String} title the name of the book
+	 * @param {String} description the ook description
+	 * @param {Number} chNums the number of chapters in the book
 	 * @returns {Boolean} returns true if the new event has been created
 	 */
 	async newBook(title, description, chNums) {
