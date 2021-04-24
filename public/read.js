@@ -1,8 +1,12 @@
 
 window.addEventListener('DOMContentLoaded', () => {
 	console.log('DOMContentLoaded')
+	
+	//add event listeners for various buttons once document loaded
 	document.getElementById("copyButton").addEventListener("click", copyText)
 	document.getElementById("idiomButton").addEventListener("click", idiomPredict)
+	document.getElementById("newnoteButton").addEventListener("click", noteForm)
+	document.getElementById('saveNote').addEventListener('click', addNote)
 
 	document.getElementById("menu").onmousedown = function(e) {
 		e = e || window.event
@@ -10,45 +14,49 @@ window.addEventListener('DOMContentLoaded', () => {
 	}
 
 	document.body.onmousedown = function(e) {
-		divVisibility()
+		closeMessage()
 	}
 })
 
 async function idiomPredict() {
 	const text = window.getSelection().toString()
 	closeMenu()
-	let formData = new FormData();
-	formData.append('sentence', text);
+	let formData = new FormData()
+	formData.append('sentence', text)
 
 	let data = await fetch('http://0.0.0.0:8090/predict', {
 	method: 'POST', 
 	body: formData
 	})
 	
-	const prediction = await data.json();
+	const prediction = await data.json()
 	const idiom = prediction.prediction
-	displayIdiom(idiom)
+	displayMessage(idiom, "placeholder definition")
 }
 
-function displayIdiom(idiom) {
-	const defDiv = document.getElementById("definitions");
+function displayMessage(messageHeading, messageContents) {
+	const msgDiv = document.getElementById("messages")
 	
-	const defWidth = (window.innerWidth / 4)
-	const defheight = (window.innerHeight / 4)
+	const msgWidth = (window.innerWidth / 4)
+	const msgheight = (window.innerHeight / 4)
 
-    defDiv.style.top = (defheight + (defheight/2)) + 'px'
-    defDiv.style.left = (defWidth + (defWidth/2))  + 'px'
-	defDiv.style.height = defheight + 'px'
-	defDiv.style.width = defWidth + 'px'
+    msgDiv.style.top = (msgheight + (msgheight/2)) + 'px'
+    msgDiv.style.left = (msgWidth + (msgWidth/2))  + 'px'
+	msgDiv.style.height = msgheight + 'px'
+	msgDiv.style.width = msgWidth + 'px'
+	msgDiv.style.position = 'fixed'
+	msgDiv.style.display = "block"
 
-	defDiv.style.position = 'fixed'
-	defDiv.style.display = "block"
-	defDiv.innerHTML = `<h1>${idiom}</h1>`
+	const heading = document.getElementById("messageHeading")
+	const contents = document.getElementById("messageContents")
+	heading.innerHTML = messageHeading
+	contents.innerHTML = messageContents
 }
 
 function copyText() {
 	document.execCommand("copy")
 	closeMenu()
+	closeNote()
 	deselect()
 }
 
@@ -73,8 +81,53 @@ function closeMenu() {
 	menu.style.display = "none"
 }
 
-function divVisibility() {
-	const defDiv = document.getElementById("definitions")
+function closeNote() {
+	const noteForm = document.getElementById('notes')
+	noteForm.style.display = "none"
+}
+
+function noteForm() {
+	closeMenu()
+	const noteForm = document.getElementById('notes')
+	
+	const highlighted = document.getElementById('highlighted')
+	highlighted.value = window.getSelection().toString()
+
+	const defWidth = (window.innerWidth / 4)
+	const defheight = (window.innerHeight / 4)
+
+    noteForm.style.top = (defheight + (defheight/2)) + 'px'
+    noteForm.style.left = (defWidth + (defWidth/2))  + 'px'
+	noteForm.style.height = "30%"
+	noteForm.style.width = "25%"
+	noteForm.style.position = 'fixed'
+	noteForm.style.display = "block"
+	noteForm.style.padding = "2em"
+}
+
+async function addNote() {
+	const highlighted = document.getElementById('highlighted')
+	highlightedText = highlighted.value
+
+	const noteTextArea = document.getElementById('noteText')
+	noteText = noteTextArea.value
+
+	const noteLink = window.location.href
+	
+	let formData = new FormData()
+	formData.append('highlighted', highlightedText)
+	formData.append('noteText', noteText)
+
+	let data = await fetch(`${noteLink}`, {
+	method: 'POST', 
+	body: formData
+	})
+	closeNote()
+	displayMessage('Note added successfully.', `Saved note "${noteText}" for text "${highlightedText}".`)
+}
+
+function closeMessage() {
+	const defDiv = document.getElementById("messages")
 	defDiv.style.display = "none"
 }
 
@@ -85,7 +138,8 @@ function deselect() {
 document.addEventListener('scroll', function(e) {
 	closeMenu()
 	deselect()
-	divVisibility()
+	closeNote()
+	closeMessage()
 })
 
 document.addEventListener("selectionchange", function(e) {

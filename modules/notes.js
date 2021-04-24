@@ -6,20 +6,21 @@ import 'fs'
 import { fstat, readFile, readFileSync } from 'fs'
 
 /**
- * Events
- * ES6 module that handles creating and retrieving books.
+ * Notes
+ * ES6 module that handles creating and retrieving notes.
  */
 class Notes {
 	/**
-   * Create an event object
+   * Create an notes object
    * @param {String} [dbName=":memory:"] - The name of the database file to use.
    */
 	constructor(dbName = ':memory:') {
 		return (async() => {
 			this.db = await sqlite.open(dbName)
-			// we need this table to store the events
+			// we need this table to store the notes
 			const sql = `CREATE TABLE IF NOT EXISTS notes\
 				(id INTEGER PRIMARY KEY AUTOINCREMENT, highlighted_text TEXT, note_text TEXT, ch_num INTEGER, 
+					book_id INTEGER, user_id INTEGER, 
 					FOREIGN KEY(book_id) REFERENCES books(id), FOREIGN KEY(user_id) REFERENCES users(id));`
 			await this.db.run(sql)
 			return this
@@ -33,7 +34,7 @@ class Notes {
 	 * @param {Number} chNums the name and extension of the event image
 	 * @returns {Boolean} returns true if the new event has been created
 	 */
-	async newNote(noteText, highlightedText, chNum, bookID, userID) {
+	async createNote(noteText, highlightedText, chNum, bookID, userID) {
 		Array.from(arguments).forEach( val => {
 			if(val.length === 0) throw new Error('missing field')
 		})
@@ -53,6 +54,14 @@ class Notes {
 	async getNote(id) {
 		if(typeof id !== 'number') throw new Error('id must be a number')
 		const sql = `SELECT * FROM notes WHERE id=${id}`
+		const result = await this.db.get(sql)
+		if(result === undefined) throw new Error('no results')
+		return result
+	}
+
+	//get notes for a given page
+	async getNotes(bookID, userID, chNum) {
+		const sql = `SELECT * FROM notes WHERE book_id=${bookID} AND user_id=${userID} AND ch_num=${chNum}`
 		const result = await this.db.get(sql)
 		if(result === undefined) throw new Error('no results')
 		return result

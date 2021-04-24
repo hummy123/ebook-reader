@@ -4,6 +4,7 @@ const router = new Router()
 
 import Accounts from '../modules/accounts.js'
 import Books from '../modules/books.js'
+import Notes from '../modules/notes.js'
 const dbName = 'website.db'
 
 /**
@@ -25,6 +26,24 @@ router.get('/book/:bookid/:chid', async ctx => {
 		await ctx.render('error', ctx.hbs)
 	} finally {
 		book.close()
+	}
+})
+
+router.post('/book/:bookid/:chid', async ctx => {
+	const notes = await new Notes(dbName)
+	const body = ctx.request.body //posted form body
+	try {
+		const bookID = parseInt(ctx.params.bookid)
+		const chNum = parseInt(ctx.params.chid)
+		const userID = parseInt(ctx.hbs.authorised)
+		const highlightedText = body.highlighted
+		const noteText = body.noteText
+		
+		await notes.createNote(noteText, highlightedText, chNum, bookID, userID)
+	} catch(err) {
+		console.log(err)
+	} finally {
+		notes.close()
 	}
 })
 

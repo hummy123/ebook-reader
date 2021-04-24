@@ -27,7 +27,7 @@ body {
 }
 
 main {
-  max-width: 60%;
+  max-width: 50%;
   margin: auto;
   text-align: justify;
   padding: 4vw;
@@ -76,12 +76,19 @@ footer {
 }
 
 div {
-  display:none;
+  display: none;
   background-color: #ece6da;
   box-shadow:
   inset 0 -3em 3em #c9c3b7,
         0 0  0.5em #ece1cb,
         0.3em 0.3em 1em #948f85;
+}
+
+div textarea {
+  width: 100%;
+  height: 50%;
+  font-size: 1.25em;
+  padding: 5%;
 }
 
 div ul {
@@ -95,6 +102,27 @@ div ul li {
   display: block;
   cursor: pointer; 
 }
+
+div ol {
+  width: 100%;
+  list-style-type: none;
+  border: 0.1em solid #979185;
+  text-align: center;
+}
+
+div form ol input[tyoe="text"] {
+  display: none;
+}
+
+div ol li button {
+  margin:0%;
+  padding: 1em;
+}
+
+div ol li {
+  padding: 3%;
+}
+
 
 div h1 {
   margin:auto;

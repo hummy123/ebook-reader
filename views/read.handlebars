@@ -33,7 +33,33 @@
         <li id="settinsButton">Display Settings</li>
     </ul>
 </div>
-<div id="definitions"></div>
+<div id="notes">
+    <ol>
+        <li>
+            <textarea id="noteText" name="noteText"></textarea>
+        </li>
+        <li>
+            <button value="Save Note" id="saveNote">Save Note</button>
+        </li>
+        <li>
+            <input type="hidden" id="highlighted" name="highlighted">
+        </li>
+    </ol>
+</div>
+<div id="messages">
+    <ol>
+        <li>
+            <h1 id="messageHeading">
+
+            </h1>
+        </li>
+        <li>
+            <p id="messageContents">
+
+            </p>
+        </li>
+    </ol>
+</div>
 <footer>
     <ul>
         {{#if ch.prev}}
