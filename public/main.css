@@ -129,6 +129,37 @@ div ol li p table{
   width: fit-content%;
 }
 
+li label {
+  font-size: 1.35em;
+  display: block;
+  padding-bottom: 0.5vh;
+}
+
+li input[type="range"] {
+  -webkit-appearance: none;
+  width: 25%;
+  height: 1.5vh;
+  border-radius: 10em;
+  background-color: white;
+  outline: none;
+  opacity: 0.7;
+  -webkit-transition: .2s;
+  transition: opacity .2s;
+}
+
+li input[type="range"]:hover {
+  opacity: 0.9;
+}
+
+li input[type="range"]::-webkit-slider-thumb {
+  -webkit-appearance: none;
+  appearance: none;
+  width: 2vh;
+  height: 2vh;
+  border-radius: 50%;
+  background: #726e66;
+}
+
 div h1 {
   margin:auto;
   text-align: center;
