@@ -124,6 +124,10 @@ div ol li {
   padding: 3%;
 }
 
+div ol li p table{
+  padding: 3%;
+  width: fit-content%;
+}
 
 div h1 {
   margin:auto;

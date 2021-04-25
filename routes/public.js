@@ -72,15 +72,14 @@ router.get('/book/:bookid', async ctx => {
 	}
 })
 
-router.get('/notes/:bookid', async ctx => {
+router.post('/notes/:bookid', async ctx => {
 	const notes = await new Notes(dbName)
 	const bookID = parseInt(ctx.params.bookid)
 	const userID = parseInt(ctx.hbs.authorised)
 	let noteList = await notes.getNotes(bookID, userID)
 	notes.close()
 	
-	console.log(noteList)
-	return noteList
+	ctx.body=noteList
 })
 
 router.get('/addbook', async ctx => {

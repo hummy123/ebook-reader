@@ -146,10 +146,21 @@ async function viewNotes() {
 	let noteLink = window.location.href
 	noteLink = noteLink.substr(0, noteLink.lastIndexOf("\/") + 1)
 	noteLink = noteLink.replace('/book/', '/notes/')
-	let data = await fetch(`${noteLink}`, {method: 'GET'})
+	let data = await fetch(`${noteLink}`, {method: 'POST'})
 	
 	const response = await data.json()
-	console.log(response)
+	const table = await noteTable(response)
+	console.log(table)
+	displayMessage("View Notes", table)
+}
+
+async function noteTable(noteList) {
+	let tableString = `<table><th>Highlighted Text</th><th>Note Text</th>`
+	for (const entry of noteList) {
+		tableString += `<tr> <td>${entry.highlighted_text}</td> <td>${entry.note_text}</td> </tr>`
+	}
+	tableString += `</table>`
+	return tableString
 }
 
 function closeMessage() {
