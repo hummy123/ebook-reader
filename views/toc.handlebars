@@ -12,12 +12,13 @@
 <body>
 <main>
     <img src="/../books/{{toc.image}}" /> <br />
+    {{#if bookmark}}
+        <p><a href="/book/{{toc.bookid}}/{{bookmark}}">Return to Chapter {{bookmark}}</a></p>
+    {{/if}}
     {{#each toc.chapters}}
-        <p><a href="{{id}}">{{name}}</a></p>
+        <p><a href="/book/{{@root.toc.bookid}}/{{id}}">{{name}}</a></p>
     {{/each}}
 </main>
-
-<div id="definitions"></div>
 <footer>
     <ul>
         <li><a href="/"> Return to Home </a></li>

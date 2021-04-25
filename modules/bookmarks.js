@@ -48,8 +48,9 @@ class Bookmarks {
 	 * @returns {Object} returns array of all event objects
 	 */
 	async getBookmark(userID, bookID) {
-		const sql = `SELECT * FROM books WHERE user_id=${userID} AND book_id=${bookID}`
-		return await this.db.all(sql)
+		const sql = `SELECT * FROM bookmarks WHERE user_id=${userID} AND book_id=${bookID}`
+		const result = await this.db.get(sql)
+		return result.ch_num
 	}
 	
 	/**
@@ -67,12 +68,12 @@ class Bookmarks {
 	 * @returns {Object} returns array of all event objects
 	 */
 	 async checkBookmark(userID, bookID, chNum) {
-		const sql = `SELECT * FROM bookmarks WHERE user_id=${userID}, book_id=${bookID}`
+		const sql = `SELECT * FROM bookmarks WHERE user_id=${userID} AND book_id=${bookID}`
 		const result = await this.db.get(sql)
 		if (result === undefined) {
-			newBookmark(bookID, userID, chNum)
+			await this.newBookmark(bookID, userID, chNum)
 		} else {
-			updateBookmark(userID, bookID, chNum)
+			await this.updateBookmark(userID, bookID, chNum)
 		}
 	}
 

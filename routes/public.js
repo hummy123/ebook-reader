@@ -5,6 +5,7 @@ const router = new Router()
 import Accounts from '../modules/accounts.js'
 import Books from '../modules/books.js'
 import Notes from '../modules/notes.js'
+import Bookmarks from '../modules/bookmarks.js'
 const dbName = 'website.db'
 
 /**
@@ -48,18 +49,26 @@ router.post('/book/:bookid/:chid', async ctx => {
 })
 
 router.get('/book/:bookid', async ctx => {
-	const book = await new Books(dbName)
 	try {
+		const book = await new Books(dbName)
 		const bookID = parseInt(ctx.params.bookid)
 		const toc = await book.getContents(bookID)
 		ctx.hbs.toc = toc
+		book.close()
+
+		const bookmark = await new Bookmarks(dbName)
+		const userID =parseInt(ctx.hbs.authorised)
+		const bookLoc = await bookmark.getBookmark(userID, bookID)
+		ctx.hbs.bookmark = bookLoc
+		bookmark.close()
+
 		console.log(ctx.hbs)
 		await ctx.render('toc', ctx.hbs)
 	} catch(err) {
 		console.log(err)
 		await ctx.render('error', ctx.hbs)
 	} finally {
-		book.close()
+		
 	}
 })
 
@@ -96,6 +105,22 @@ router.post('/addbook', async ctx => {
 		await ctx.render('error', ctx.hbs)
 	} finally {
 		book.close()
+	}
+})
+
+router.post('/bookmark/:bookid/:chid', async ctx => {
+	const bookmark = await new Bookmarks(dbName)
+	const body = ctx.request.body //posted form body
+	try {
+		const bookID = parseInt(ctx.params.bookid)
+		const chNum = parseInt(ctx.params.chid)
+		const userID = parseInt(ctx.hbs.authorised)
+		
+		await bookmark.checkBookmark(userID, bookID, chNum)
+	} catch(err) {
+		console.log(err)
+	} finally {
+		bookmark.close()
 	}
 })
 

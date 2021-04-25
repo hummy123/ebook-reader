@@ -17,9 +17,19 @@ window.addEventListener('DOMContentLoaded', () => {
 	document.body.onmousedown = function(e) {
 		closeMessage()
 	}
+
+	//add bookmark for most recently opened page
+	addBookmark()
 })
 
+async function addBookmark() {
+	let noteLink = window.location.href
+	noteLink = noteLink.replace('/book/', '/bookmark/')
 
+	await fetch(`${noteLink}`, {
+	method: 'POST'
+	})
+}
 
 async function idiomPredict() {
 	const text = window.getSelection().toString()
