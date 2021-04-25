@@ -59,10 +59,12 @@ class Notes {
 		return result
 	}
 
-	//get notes for a given page
-	async getNotes(bookID, userID, chNum) {
-		const sql = `SELECT * FROM notes WHERE book_id=${bookID} AND user_id=${userID} AND ch_num=${chNum}`
-		const result = await this.db.get(sql)
+	//get notes for a given book by a given user
+	async getNotes(bookID, userID) {
+		const sql = `SELECT highlighted_text, note_text 
+		FROM notes WHERE book_id=${bookID} AND user_id=${userID} 
+		ORDER BY ch_num`
+		const result = await this.db.all(sql)
 		if(result === undefined) throw new Error('no results')
 		return result
 	}

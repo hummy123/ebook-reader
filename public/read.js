@@ -7,6 +7,7 @@ window.addEventListener('DOMContentLoaded', () => {
 	document.getElementById("idiomButton").addEventListener("click", idiomPredict)
 	document.getElementById("newnoteButton").addEventListener("click", noteForm)
 	document.getElementById('saveNote').addEventListener('click', addNote)
+	document.getElementById('viewNotesButton').addEventListener('click', viewNotes)
 
 	document.getElementById("menu").onmousedown = function(e) {
 		e = e || window.event
@@ -17,6 +18,8 @@ window.addEventListener('DOMContentLoaded', () => {
 		closeMessage()
 	}
 })
+
+
 
 async function idiomPredict() {
 	const text = window.getSelection().toString()
@@ -37,13 +40,13 @@ async function idiomPredict() {
 function displayMessage(messageHeading, messageContents) {
 	const msgDiv = document.getElementById("messages")
 	
-	const msgWidth = (window.innerWidth / 4)
-	const msgheight = (window.innerHeight / 4)
+	const msgWidth = (window.innerWidth * 0.35)
+	const msgheight = (window.innerHeight * 0.35)
 
-    msgDiv.style.top = (msgheight + (msgheight/2)) + 'px'
-    msgDiv.style.left = (msgWidth + (msgWidth/2))  + 'px'
-	msgDiv.style.height = msgheight + 'px'
-	msgDiv.style.width = msgWidth + 'px'
+    msgDiv.style.top = msgheight + 'px'
+    msgDiv.style.left = msgWidth  + 'px'
+	msgDiv.style.height = "30%"
+	msgDiv.style.width = "30%"
 	msgDiv.style.position = 'fixed'
 	msgDiv.style.display = "block"
 
@@ -93,13 +96,13 @@ function noteForm() {
 	const highlighted = document.getElementById('highlighted')
 	highlighted.value = window.getSelection().toString()
 
-	const defWidth = (window.innerWidth / 4)
-	const defheight = (window.innerHeight / 4)
+	const defWidth = (window.innerWidth * 0.35)
+	const defheight = (window.innerHeight * 0.35)
 
-    noteForm.style.top = (defheight + (defheight/2)) + 'px'
-    noteForm.style.left = (defWidth + (defWidth/2))  + 'px'
-	noteForm.style.height = "30%"
-	noteForm.style.width = "25%"
+    noteForm.style.top = defheight + 'px'
+    noteForm.style.left = defWidth  + 'px'
+	noteForm.style.height = "fit-contents"
+	noteForm.style.width = "30%"
 	noteForm.style.position = 'fixed'
 	noteForm.style.display = "block"
 	noteForm.style.padding = "2em"
@@ -118,12 +121,24 @@ async function addNote() {
 	formData.append('highlighted', highlightedText)
 	formData.append('noteText', noteText)
 
-	let data = await fetch(`${noteLink}`, {
+	await fetch(`${noteLink}`, {
 	method: 'POST', 
 	body: formData
 	})
 	closeNote()
 	displayMessage('Note added successfully.', `Saved note "${noteText}" for text "${highlightedText}".`)
+}
+
+async function viewNotes() {
+	closeMenu()
+
+	let noteLink = window.location.href
+	noteLink = noteLink.substr(0, noteLink.lastIndexOf("\/") + 1)
+	noteLink = noteLink.replace('/book/', '/notes/')
+	let data = await fetch(`${noteLink}`, {method: 'GET'})
+	
+	const response = await data.json()
+	console.log(response)
 }
 
 function closeMessage() {
