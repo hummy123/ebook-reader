@@ -44,7 +44,8 @@ async function idiomPredict() {
 	
 	const prediction = await data.json()
 	const idiom = prediction.prediction
-	displayMessage(idiom, "placeholder definition")
+	const definition = prediction.definition
+	displayMessage(idiom, definition)
 }
 
 function displayMessage(messageHeading, messageContents) {
