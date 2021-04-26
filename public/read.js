@@ -12,6 +12,12 @@ window.addEventListener('DOMContentLoaded', () => {
 	document.getElementById('settingsButton').addEventListener('click', openSettings)
 	document.getElementById('layerOpacity').addEventListener('input', changeShade)
 	document.getElementById('colourOverlay').addEventListener('input', changeShade)
+	
+	document.getElementById('plusText').addEventListener('click', plusText)
+	document.getElementById('minusText').addEventListener('click', minusText)
+	document.getElementById('plusline').addEventListener('click', plusLine)
+	document.getElementById('minusLine').addEventListener('click', minusLine)
+	document.getElementById('font').addEventListener('input', typefaceChange)
 
 	document.getElementById('stopClick').addEventListener('click', closeAll)
 	
@@ -19,15 +25,6 @@ window.addEventListener('DOMContentLoaded', () => {
 		e = e || window.event
 		e.preventDefault()
 	}
-
-
-	/* EXAMPLE CODE OF GETTING ALL P ELEMENTS FOR DISPLAY SETTINGS
-	var x = document.querySelectorAll("main");
-
-	for (test of x) {
-		test.style.backgroundColor = "red"; 
-	}*/
-	
 
 	//add bookmark for most recently opened page
 	addBookmark()
@@ -80,6 +77,62 @@ function openSettings(){
 	settingsDiv.style.position = 'fixed'
 	settingsDiv.style.display = "block"
 	settingsDiv.style.zIndex = '2'
+}
+
+function typefaceChange() {
+	const chosenFont = document.getElementById('font').value
+	const elList = ['p', 'label', 'li', 'a', 'h1', 'h2']
+	for (const curEl of elList) {
+		typefaceSelector(curEl, chosenFont)
+	}
+}
+
+function typefaceSelector(elType, newFont) {
+	const elList = document.querySelectorAll(elType)
+	for (const el of elList) {
+		el.style.fontFamily = newFont
+	}
+}
+
+function plusText() {
+	textSizeChange(1)
+}
+
+function minusText() {
+	textSizeChange(-1)
+}
+
+function textSizeChange(changeVal) {
+	const elList = ['p', 'label', 'li', 'a', 'h1', 'h2']
+	for (curEl of elList) {
+		textSizeSelector(changeVal, curEl)
+	}
+}
+
+function textSizeSelector(changeVal, elSelector) {
+	const elList = document.querySelectorAll(elSelector)
+	for (const el of elList) {
+		let curSize = window.getComputedStyle(el).fontSize
+		curSize = parseFloat(curSize.substr(0, curSize.lastIndexOf('px')))
+		curSize += changeVal
+		el.style.fontSize = `${curSize}px`
+	}
+}
+
+function plusLine() {
+	lineHeightChange(1)
+}
+
+function minusLine() {
+	lineHeightChange(-1)
+}
+
+function lineHeightChange(changeVal) {
+	const main = document.querySelector("main")
+	let curHeight = window.getComputedStyle(main).lineHeight
+	curHeight = parseFloat(curHeight.substr(0, curHeight.lastIndexOf('px')))
+	curHeight += changeVal
+	main.style.lineHeight = `${curHeight}px`
 }
 
 function changeShade() {

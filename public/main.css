@@ -135,6 +135,11 @@ li label {
   padding-bottom: 0.5vh;
 }
 
+li img {
+  display: inline-block;
+  padding: 1%;
+}
+
 li input[type="range"] {
   -webkit-appearance: none;
   width: 25%;
