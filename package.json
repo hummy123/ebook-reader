@@ -15,10 +15,11 @@
 		]
 	},
 	"scripts": {
-		"start": "ode --experimental-modules index.mjs ",
+		"start": "node --experimental-modules index.mjs ",
 		"jsdoc": "node_modules/.bin/jsdoc -c jsdoc.conf",
 		"linter": "node_modules/.bin/eslint .",
-		"test": "ava"
+		"test": "ava",
+		"dev": "nodemon index.js"
 	},
 	"author": "",
 	"license": "ISC",

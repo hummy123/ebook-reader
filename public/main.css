@@ -27,7 +27,7 @@ body {
 }
 
 main {
-  max-width: 50%;
+  width: 50%;
   margin: auto;
   text-align: justify;
   padding: 4vw;
@@ -101,7 +101,7 @@ div ul li {
   padding: 0.5em;;
   background-color: #ece6da;
   display: block;
-  cursor: pointer; 
+  cursor: pointer;
 }
 
 div ol {
@@ -116,7 +116,7 @@ div form ol input[tyoe="text"] {
 }
 
 div ol li button {
-  margin:0%;
+  margin:0;
   padding: 1em;
 }
 
@@ -126,7 +126,7 @@ div ol li {
 
 div ol li p table{
   padding: 3%;
-  width: fit-content%;
+  width: fit-content;
 }
 
 li label {
@@ -188,7 +188,7 @@ img {
 footer ul, footer a {
   list-style-type: none;
   border: 0.1em solid #979185;
-  
+
 }
 
 footer ul li, footer a {
@@ -222,7 +222,7 @@ blockquote {
 }
 
 header a {
-	margin-top: 0vw;
+	margin-top: 0;
 	margin-right: 3em;
 	float: right;
 	font-size: 1.3vw;
@@ -347,4 +347,34 @@ dd {
 	/* background: #dd0; */
 	padding: 0.5vw;
   margin: 0
+}
+
+/* BREAK POINTS FOR RESPONSIVE DESIGN */
+
+/* for phones */
+@media only screen and (max-width: 480px) {
+  main {
+    width: 90%;
+  }
+}
+
+/* for tablets */
+@media only screen and (min-width: 481px) and (max-width: 768px) {
+  main {
+    width: 80%;
+  }
+}
+
+/* for small laptops */
+@media only screen and (min-width: 769px) and (max-width: 1024px) {
+  main {
+    width: 70%;
+  }
+}
+
+/* for standard laptops/monitors */
+@media only screen and (min-width: 1025px) and (max-width: 1200px) {
+  main {
+    width: 60%;
+  }
 }
