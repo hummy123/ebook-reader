@@ -342,17 +342,26 @@ dd {
 
 /* BREAK POINTS FOR RESPONSIVE DESIGN */
 
-/* for phones */
+/* for small phones */
 @media only screen and (max-width: 480px) {
   main {
     width: 90%;
+  }
+  h1 {
+    font-size: 1.5em;
+  }
+  h2 {
+    font-size: 1.2em;
+  }
+  p {
+    font-size: 1.45em;
   }
   footer {
     position: static;
   }
   footer ul li, footer a {
     display: block;
-    font-size: 1em;
+    font-size: 1.2em;
     margin: 0.25vh 0;
   }
   footer ul li a {
@@ -360,13 +369,22 @@ dd {
   }
 }
 
-/* for tablets */
+/* for normal-sized phones and tablets */
 @media only screen and (min-width: 481px) and (max-width: 768px) {
   main {
     width: 80%;
   }
   footer {
     position: static;
+  }
+  h1 {
+    font-size: 1.8em;
+  }
+  h2 {
+    font-size: 1.4em;
+  }
+  p {
+    font-size: 1.35em;
   }
   footer ul li, footer a {
     display: block;
