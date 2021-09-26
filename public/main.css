@@ -12,14 +12,13 @@ p {
 }
 
 h1 {
-  display:block;
-  font-size: 2vw;
+  font-size: 2.5em;
 }
 
 h2 {
   margin-top: 0.2vw;
   padding-top:0.2vw;
-  font-size: 1.3vw;
+  font-size: 1.5em;
 }
 
 body {
@@ -30,9 +29,7 @@ main {
   width: 50%;
   margin: auto;
   text-align: justify;
-  padding: 4vw;
-  padding-top: 1.5vh;
-  padding-bottom: 1vh;
+  padding: 1.5vh 4vw 1vh;
   box-sizing: border-box;
   background-color: #ece1cb;
   line-height: 1.6;
@@ -188,13 +185,11 @@ img {
 footer ul, footer a {
   list-style-type: none;
   border: 0.1em solid #979185;
-
 }
 
 footer ul li, footer a {
-  margin-right: 2vw;
-  margin-left: 2vw;
-  font-size: 1.25vw;
+  margin: 0.5vh 1vw;
+  font-size: 1.1em;
   display: inline-block;
 }
 
@@ -203,17 +198,13 @@ footer ul li a, footer a {
   height:max-content;
   width: max-content;
   text-decoration: none;
-  background-color: #f3ecdf;
+  background-color: #bdb6a8;
   color: black;
-  box-shadow:
-  inset 0 -3em 3em #b1a99a,
-        0 0  0.5em #ece1cb,
-        0.3em 0.3em 1em #726e66;
   display: inline-block;
 }
 
 footer ul li a:hover, footer a:hover {
-  background-color: #ffffff;
+  background-color: #ece1cb;
   color: #726e66;
 }
 
@@ -356,11 +347,33 @@ dd {
   main {
     width: 90%;
   }
+  footer {
+    position: static;
+  }
+  footer ul li, footer a {
+    display: block;
+    font-size: 1em;
+    margin: 0.25vh 0;
+  }
+  footer ul li a {
+    width: 90%;
+  }
 }
 
 /* for tablets */
 @media only screen and (min-width: 481px) and (max-width: 768px) {
   main {
+    width: 80%;
+  }
+  footer {
+    position: static;
+  }
+  footer ul li, footer a {
+    display: block;
+    font-size: 1.1em;
+    margin: 0.4vh 0;
+  }
+  footer ul li a {
     width: 80%;
   }
 }
@@ -369,6 +382,9 @@ dd {
 @media only screen and (min-width: 769px) and (max-width: 1024px) {
   main {
     width: 70%;
+  }
+  footer {
+    position: static;
   }
 }
 
