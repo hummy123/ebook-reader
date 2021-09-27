@@ -343,7 +343,7 @@ dd {
 /* BREAK POINTS FOR RESPONSIVE DESIGN */
 
 /* for phones */
-@media (min-width: 576px) {
+@media (max-width: 767px) {
   main {
     width: 90%;
   }
@@ -370,7 +370,7 @@ dd {
 }
 
 /* for tablets */
-@media (min-width: 768px) {
+@media (min-width: 768px) and (max-width: 991px) {
   main {
     width: 80%;
   }
@@ -378,17 +378,17 @@ dd {
     position: static;
   }
   h1 {
-    font-size: 1.8em;
+    font-size: 2em;
   }
   h2 {
-    font-size: 1.4em;
+    font-size: 1.5em;
   }
   p {
     font-size: 1.35em;
   }
   footer ul li, footer a {
     display: block;
-    font-size: 1.1em;
+    font-size: 1.35em;
     margin: 0.4vh 0;
   }
   footer ul li a {
@@ -397,15 +397,35 @@ dd {
 }
 
 /* for laptops */
-@media (min-width: 992px) {
+@media (min-width: 992px) and (max-width: 1024px) {
   main {
     width: 70%;
   }
+  h1 {
+    font-size: 2.2em;
+  }
+  h2 {
+    font-size: 1.6em;
+  }
+  p {
+    font-size: 1.3em;
+  }
 }
 
-/* for standard laptops/monitors */
-@media only screen and (min-width: 1025px) and (max-width: 1200px) {
+/* for standard laptops */
+@media (min-width: 1025px) and (max-width: 1200px) {
   main {
     width: 60%;
   }
+  h1 {
+    font-size: 2.4em;
+  }
+  h2 {
+    font-size: 1.8em;
+  }
+  p {
+    font-size: 1.3em;
+  }
 }
+
+/* defaults are for devices larger than laptops */
